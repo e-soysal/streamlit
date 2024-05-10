@@ -23,8 +23,8 @@ def main():
     # User inputs
     f = 275/265**2
     w_0 = 17500
-    a = st.slider('a:', value=1.00, min_value=-100.00, max_value=100.00, step=0.1)
-    b = st.slider('b:', value=1.00, min_value=-100.00, max_value=100.00, step=0.1)
+    a = st.slider('a:', value=10, min_value=0.00, max_value=10000.00, step=10)
+    b = st.slider('b:', value=10, min_value=0.00, max_value=10000.00, step=10)
     x = np.linspace(0, 1000, 100) 
     if st.button('Simulate'):
         g = sigmoid(x,a,b)
