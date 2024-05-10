@@ -16,7 +16,7 @@ def ruin_prob(f, w_0):
     
 def sigmoid(x,a,b):
     """Sigmoid function."""
-    return 1 / (1 + np.exp(-x/a+b))
+    return 1 / (1 + np.exp(-(x-a)*b))
 
 def main():
     st.write("Benchmark process: $\mu$: 275, $\sigma$: 265, $w_0$: 17500")
@@ -24,7 +24,7 @@ def main():
     f = 275/265**2
     w_0 = 17500
     a = st.slider('a:', value=1, min_value=0, max_value=100, step=1)
-    b = st.slider('b:', value=10, min_value=0, max_value=10, step=10)
+    b = st.slider('b:', value=10, min_value=0, max_value=2, step=10)
     x = np.linspace(0, 1000, 100) 
     if st.button('Simulate'):
         g = sigmoid(x,a,b)
