@@ -25,7 +25,7 @@ def main():
     w_0 = 100
     a = st.slider('a:', value=0.95, min_value=0.00, max_value=5.00, step=0.01)
     b = st.slider('b:', value=0.05, min_value=0.00, max_value=5.00, step=0.01)
-    x = np.linspace(0, 6000, 100)  # Generate 100 points between -10 and 10
+    x = np.linspace(0, 10, 100)  # Generate 100 points between -10 and 10
     if st.button('Simulate'):
         g = sigmoid(x,a,b)
         P = ruin_prob(g*f,w_0)
