@@ -43,7 +43,7 @@ def main():
         # and the minimum points
         min_index_1 = np.argmin(P)
         min_x_1 = x[min_index_1]
-        min_y_1 = P[min_index_1
+        min_y_1 = P[min_index_1]
         
         ax[1].plot(x, P, label = "$P_1$", zorder=1, color = 'black')
         ax[1].scatter(min_x_1, min_y_1, color='red', label='Minimum points', zorder=2)
