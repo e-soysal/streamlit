@@ -16,7 +16,7 @@ def ruin_prob(f, w_0):
     
 def sigmoid(x,a,b):
     """Sigmoid function."""
-    return 1 / (1 + np.exp(-x*a+b))
+    return 1 / (1 + np.exp(-x/a+b))
 
 def main():
     st.write("Benchmark process: $\mu$: 275, $\sigma$: 265, $w_0$: 17500")
