@@ -32,9 +32,9 @@ def main():
         # Display results
     
         fig, ax = plt.subplots(1,2, figsize=(10, 4))
-        ax[0].plot(x, f*g, label = "Impact factor", color = 'black')
+        ax[0].plot(x, g, label = "Impact factor", color = 'black')
         ax[0].set_xlabel('Mitigation expenditure, X')
-        ax[0].set_ylabel('g(X)*f')
+        ax[0].set_ylabel('g(X)')
         ax[0].legend()
         ax[0].set_title('Fig. 2A: Odds function')
         ax[0].grid(True)
@@ -43,9 +43,16 @@ def main():
         # and the minimum points
         min_index_1 = np.argmin(P)
         min_x_1 = x[min_index_1]
-        min_y_1 = P[min_index_1]
-        ax[0].set_xticks([])  # Remove x-axis numbers
-        ax[0].set_yticks([])  # Remove y-axis numbers
+        min_y_1 = P[min_index_1
+        
+        ax[1].plot(x, P, label = "$P_1$", zorder=1, color = 'black')
+        ax[1].scatter(min_x_1, min_y_1, color='red', label='Minimum points', zorder=2)
+        ax[1].set_xlabel('Mitigation expenditure, X')
+        ax[1].set_ylabel('P(X)')
+        ax[1].legend()
+        ax[1].set_title('Fig. 2B: Ruin probability')
+        ax[1].grid(True)
+
         st.pyplot(plt)
      
 if __name__ == '__main__':
