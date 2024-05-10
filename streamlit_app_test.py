@@ -28,7 +28,7 @@ def main():
     x = np.linspace(0, 1000, 100) 
     if st.button('Simulate'):
         g = sigmoid(x,a,b)
-        P = ruin_prob(g*f,w_0)
+        P = ruin_prob(g*f,w_0-x)
         # Display results
     
         fig, ax = plt.subplots(1,2, figsize=(10, 4))
