@@ -20,11 +20,12 @@ def sigmoid(x,a,b):
 
 def main():
     st.write("Benchmark process: $\mu$: 275, $\sigma$: 265, $w_0$: 17500")
-    # User inputs
+    st.write("To stay below 2 degrees, we need to invest 5 percent of GDP")
+# User inputs
     f = 275/265**2
     w_0 = 17500
-    a = st.slider('a:', value=1, min_value=0, max_value=1000, step=1)
-    b = st.slider('b:', value=0.1, min_value=0.01, max_value=1.00, step=0.01)
+    a = st.slider('a:', value=1, min_value=0, max_value=1000, step=10)
+    b = st.slider('b:', value=0.1, min_value=0.001, max_value=0.1, step=0.001)
     x = np.linspace(0, 1000, 100) 
     if st.button('Simulate'):
         g = sigmoid(x,a,b)
