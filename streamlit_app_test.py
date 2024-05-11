@@ -19,6 +19,13 @@ def sigmoid(x,a,b):
     """Sigmoid function."""
     return 1 / (1 + np.exp(-(x-a)*b))
 
+def find_ruin(vector):
+    # Find the index of the first element that is 0 or smaller and set it and all following elements to 0.
+    if np.any(vector <= 0):
+        first_negative_index = np.argmax(vector <= 0)
+        vector[first_negative_index:] = 0
+    return vector
+
 def main():
     st.write("Benchmark process: $\mu$: 280, $\sigma$: 286, $w_0$: 17500")
     st.write("To stay below 2 degrees, we need to invest 5 percent of GDP")
@@ -43,6 +50,7 @@ def main():
     rd = pd.DataFrame(np.random.normal(mu, sigma, len(x)))
     
     random_path = 17527.18851 +  rd.cumsum()
+    random_path = find_ruin(random_path)
     
     # Fit linear regression
     slope, intercept, r_value, p_value, std_err = linregress(hist_data['year'], hist_data['GDP'])
