@@ -66,7 +66,7 @@ def main():
     ax[0].plot(x, random_path, label = "Example of random path", color = 'red')
     ax[0].set_xlabel('Year')
     ax[0].legend()
-    ax[0].set_ylim(0, np.max(random_path))
+    ax[0].set_ylim(0, np.max([random_path,trend_GDP]))
     ax[0].set_title('GDP per capita [PPP, 2017 USD]')
     ax[0].grid(True)
 
