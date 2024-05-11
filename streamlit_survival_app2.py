@@ -62,7 +62,7 @@ def main():
     ax[0].scatter(x[-1], transition_GDP[-1], label = "", color = 'Black')
     ax[0].annotate('w_0', xy=(x[-1], transition_GDP[-1]), xytext=(x[-1]-5, transition_GDP[-1]-1000),
              arrowprops=dict(facecolor='black', arrowstyle='->'))
-    ax[0].set_xlim(0,np.max(np.max(transition_GDP),np.max(hist_data.GDP[:])))
+    ax[0].set_xlim(0,np.max([np.max(transition_GDP),np.max(hist_data.GDP[:])]))
     ax[0].set_xlabel('Year')
     ax[0].set_title('GDP per capita [PPP, 2017 USD]')
     ax[0].legend()
