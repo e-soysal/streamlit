@@ -59,15 +59,15 @@ def main():
     trend_GDP = slope * x + intercept
     
     # Plot
-    fig, ax = plt.subplots(1,1, figsize=(10, 4))
-    ax[0].plot(hist_data.year, hist_data.GDP, label = "Historical", color = 'black')
-    ax[0].plot(x, trend_GDP, label = "Benchmark projection", color = 'black', linestyle = '--')
-    ax[0].plot(x, random_path, label = "Example of random path", color = 'red')
-    ax[0].set_xlabel('Year')
-    ax[0].legend()
-    ax[0].set_ylim(0, np.max([random_path,trend_GDP]))
-    ax[0].set_title('GDP per capita [PPP, 2017 USD]')
-    ax[0].grid(True)
+    fig, ax = plt.subplots(1,1, figsize=(6, 5))
+    ax.plot(hist_data.year, hist_data.GDP, label = "Historical", color = 'black')
+    ax.plot(x, trend_GDP, label = "Benchmark projection", color = 'black', linestyle = '--')
+    ax.plot(x, random_path, label = "Example of random path", color = 'red')
+    ax.set_xlabel('Year')
+    ax.legend()
+    ax.set_ylim(0, np.max([random_path,trend_GDP]))
+    ax.set_title('GDP per capita [PPP, 2017 USD]')
+    ax.grid(True)
 
     # Plotting the ruin probability
     st.pyplot(plt)
