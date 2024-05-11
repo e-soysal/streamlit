@@ -31,13 +31,14 @@ def find_ruin(vector):
 
 def main():
     # User inputs
-    w_0 = 17500
+    mitigation_year = 628
     
     # Display results
     hist_data = { 'year': [1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022],
                  'GDP': [9968.671891, 10192.94482, 10440.52934,	10553.45026, 10776.47927, 11138.26003, 11246.50192, 11398.57076, 11668.42089, 12105.37947, 12495.37837, 12969.54552, 13464.8027, 13658.73942, 13391.3059, 13899.49329, 14263.1084, 14535.86611, 14820.27166, 15139.44768, 15461.1147, 15777.59079, 
                          16186.46995, 16588.58729, 16877.47189, 16213.37544, 17091.35075, 17527.18851]}
     hist_data = pd.DataFrame(hist_data)
+    w_0 = 17527.18851
     
     growth = hist_data['GDP'].diff()
     mu_bm = np.mean(growth)
@@ -46,12 +47,11 @@ def main():
     
     a = st.slider('Location (left -> right)', value=0, min_value=-5, max_value=5, step=1)
     b = st.slider('Shape (flat -> steep):', value=1.00, min_value=0.01, max_value=2.0, step=0.01)
-    mitigation = st.slider('Mitigation expenditure:', value=638, min_value=0, max_value=1000, step=10)    
+    mitigation = st.slider('Mitigation expenditure:', value=mitigation_year, min_value=0, max_value=1000, step=10)    
     
     # Find transition GDP until 2032
     x = np.arange(0,11)+2022
-    mitigation_year = 628
-    transition_growth = (mu_bm-mitigation_year)*np.ones(len(x))
+    transition_growth = (mu_bm-mitigation)*np.ones(len(x))
     transition_growth[0] = 0
     transition_GDP = w_0 + transition_growth.cumsum()
 
@@ -64,9 +64,8 @@ def main():
              arrowprops=dict(facecolor='black', arrowstyle='->'))
     
     ax[0].set_xlabel('Year')
-    ax[0].set_ylabel('GDP per capita [PPP, 2017 USD]')
+    ax[0].set_title('GDP per capita [PPP, 2017 USD]')
     ax[0].legend()
-    ax[0].set_title('GDP')
     ax[0].grid(True)
 
     scaling = 100
@@ -77,7 +76,8 @@ def main():
     P = ruin_prob(g_mitigation*f, transition_GDP[-1])
     st.write('Probability of ruin (after 2032): ', P)
     
-    ax[1].plot([630,630], [0,1], color = 'red', linestyle = "--", label = '2 degrees')
+    ax[1].plot([mitigation_year, mitigation_year], [0,1], color = 'red', linestyle = "--", label = '2 degrees')
+    ax[1].plot([125, 125], [0,1], color = 'red', linestyle = "--", label = 'Current level')
     ax[1].plot(sig_x, sig, color = 'black')
     
     ax[1].scatter(mitigation, g_mitigation, label = "", color = 'Black')
