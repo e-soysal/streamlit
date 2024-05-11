@@ -46,8 +46,9 @@ def main():
     f = mu/sigma**2
     P = ruin_prob(f,w_0)
     
-    x = np.arange(1,100)+2022
+    x = np.arange(0,100)+2022
     rd = pd.DataFrame(np.random.normal(mu, sigma, len(x)))
+    rd[0] = 0
     
     random_path = 17527.18851 +  rd.cumsum()
     random_path = find_ruin(random_path)
