@@ -27,7 +27,6 @@ def find_ruin(vector):
     return vector
 
 def main():
-    st.write("Benchmark process: $\mu$: 280, $\sigma$: 286, $w_0$: 17500")
     st.write("To stay below 2 degrees, we need to invest 5 percent of GDP")
     # User inputs
     w_0 = 17500
@@ -41,10 +40,13 @@ def main():
     growth = hist_data['GDP'].diff()
     mu_bm = np.mean(growth)
     sigma_bm = np.std(growth)
+
+    st.write("Benchmark process: $\mu$:", np.round(mu_bm,0),  "$\sigma$:", int(np.round(sigma_bm,0)), "$w_0$:", 17527)
     mu = st.slider('Drift, $\mu$:', value=int(np.round(mu_bm,0)), min_value=0, max_value=500, step=1)
     sigma = st.slider('Volatility, $\sigma$:', value=int(np.round(sigma_bm,0)), min_value=0, max_value=3000, step=1)
     f = mu/sigma**2
     P = ruin_prob(f,w_0)
+    st.write('Ruin probability: ', P)
     
     x = np.arange(0,100)+2022
     rd = np.random.normal(mu, sigma, len(x))
