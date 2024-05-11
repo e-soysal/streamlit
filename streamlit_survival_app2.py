@@ -94,7 +94,7 @@ def main():
     partial_function = partial(prob_sig_function, scaling=scaling, a=a, b=b, w_0=w_0, mu_0=mu_bm, sigma_0=sigma_bm, years=len(x)-1)
     result = minimize(partial_function, X_init)
     if result.x[0]>0:
-        st.write('Optimal spending on mitigation: ', np.round(result.x[0],0), 'Optimal probability of probability: ', np.exp(result.fun))
+        st.write('Optimal spending on mitigation: ', np.round(result.x[0],0), 'Optimal probability of ruin: ', np.exp(result.fun))
         ax[1].scatter(result.x[0], sigmoid(result.x[0]/scaling, a,b)*f, label = "Optimal strategy", color = 'blue')
     else:
         st.write('Optimal spending on mitigation:        Optimal ruin probability: ')
