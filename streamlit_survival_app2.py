@@ -97,12 +97,11 @@ def main():
     else:
         st.write('Optimal spending on mitigation:        Optimal ruin probability: ')
         
+    ax[1].scatter(mitigation, g_mitigation*f, label = "Chosen strategy", color = 'Black')
     ax[1].fill_between([mitigation_year-50, mitigation_year+50], [f,f],[0,0] ,color = 'green', label = '2 degrees required investments', alpha=.3)
-    ax[1].plot([125, 125], [0,f], color = 'red', linestyle = "--", label = 'Current level')
+    ax[1].plot([125, 125], [0,f], color = 'red', linestyle = "--", label = 'Current investments')
     ax[1].plot(sig_x, sig*f, color = 'black')
     
-    ax[1].scatter(mitigation, g_mitigation*f, label = "Chosen strategy", color = 'Black')
-   
     ax[1].legend()
     ax[1].set_title('f(X)')
     ax[1].set_xlabel('Mitigation in USD per year')
