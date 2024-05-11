@@ -27,11 +27,7 @@ def find_ruin(vector):
     return vector
 
 def main():
-    st.write("To stay below 2 degrees, we need to invest 5 percent of GDP")
-    # User inputs
-    w_0 = 17500
-    
-    # Display results   
+    w_0 = 17527.18851
     hist_data = { 'year': [1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022],
                  'GDP': [9968.671891, 10192.94482, 10440.52934,	10553.45026, 10776.47927, 11138.26003, 11246.50192, 11398.57076, 11668.42089, 12105.37947, 12495.37837, 12969.54552, 13464.8027, 13658.73942, 13391.3059, 13899.49329, 14263.1084, 14535.86611, 14820.27166, 15139.44768, 15461.1147, 15777.59079, 
                          16186.46995, 16588.58729, 16877.47189, 16213.37544, 17091.35075, 17527.18851]}
@@ -40,8 +36,11 @@ def main():
     growth = hist_data['GDP'].diff()
     mu_bm = np.mean(growth)
     sigma_bm = np.std(growth)
+    
     st.write("Benchmark process:")
-    st.write("Drift, $\mu$:", int(np.round(mu_bm,0)),  "USD per year. Volatility, $\sigma$:", int(np.round(sigma_bm,0)), "USD per year^(1/2), $w_0$:", 17527, " USD")
+    st.write("Drift $\mu$:", int(np.round(mu_bm,0)),  "USD per year. Volatility $\sigma$:", int(np.round(sigma_bm,0)), "USD per year^(1/2). Initial output $w_0$:", int(np.round(w_0)), " USD")
+    
+    # User inputs
     mu = st.slider('Drift, $\mu$:', value=int(np.round(mu_bm,0)), min_value=0, max_value=500, step=1)
     sigma = st.slider('Volatility, $\sigma$:', value=int(np.round(sigma_bm,0)), min_value=0, max_value=3000, step=1)
     f = mu/sigma**2
@@ -52,7 +51,7 @@ def main():
     rd = np.random.normal(mu, sigma, len(x))
     rd[0] = 0
     
-    random_path = 17527.18851 +  rd.cumsum()
+    random_path = w_0 +  rd.cumsum()
     random_path = find_ruin(random_path)
     
     # Fit linear regression
