@@ -55,7 +55,7 @@ def main():
     sigma_bm = np.std(growth)
     f = mu_bm/sigma_bm**2
     
-    a = st.slider('Location (left -> right)', value=3.0, min_value=0.0, max_value=10.0, step=0.1)
+    a = st.slider('Location (left -> right)', value=5.0, min_value=0.0, max_value=10.0, step=0.1)
     b = st.slider('Shape (flat -> steep):', value=1.00, min_value=0.01, max_value=2.0, step=0.01)
     mitigation = st.slider('Mitigation expenditure, X*, in USD per year:', value=mitigation_year, min_value=0, max_value=1000, step=10)    
     
@@ -83,7 +83,7 @@ def main():
     g_mitigation = sigmoid(mitigation/scaling, a,b)
     # Calculate new ruin probability 2032
     P = ruin_prob(g_mitigation*f, transition_GDP[-1])
-    st.write('Probability of ruin (after 2032): ', P)
+    st.write('Probability of ruin: ', P)
 
     # Find optimal mitigation
     X_init = mitigation # Initial guess
@@ -92,7 +92,7 @@ def main():
     partial_function = partial(prob_sig_function, scaling=scaling, a=a, b=b, w_0=w_0, mu_0=mu_bm, sigma_0=sigma_bm, years=len(x)-1)
     result = minimize(partial_function, X_init)
     if result.x[0]>0:
-        st.write('Optimal spending on mitigation: ', np.round(result.x[0],0), 'Optimal ruin probability: ', np.exp(result.fun))
+        st.write('Optimal spending on mitigation: ', np.round(result.x[0],0), 'Optimal probability of probability: ', np.exp(result.fun))
         ax[1].scatter(result.x[0], sigmoid(result.x[0]/scaling, a,b)*f, label = "Optimal strategy", color = 'blue')
     else:
         st.write('Optimal spending on mitigation:        Optimal ruin probability: ')
