@@ -75,7 +75,7 @@ def main():
     P = ruin_prob(g_mitigation*f, transition_GDP[-1])
     st.write('Probability of ruin (after 2032): ', P)
     
-    ax[1].fill_between([mitigation_year-100, mitigation_year+100], [f,f],[0,0] ,color = 'green', label = '2 degrees required investments')
+    ax[1].fill_between([mitigation_year-100, mitigation_year+100], [f,f],[0,0] ,color = 'green', label = '2 degrees required investments', alpha=.3)
     ax[1].plot([125, 125], [0,f], color = 'red', linestyle = "--", label = 'Current level')
     ax[1].plot(sig_x, sig*f, color = 'black')
     
