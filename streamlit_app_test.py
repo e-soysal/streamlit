@@ -66,7 +66,7 @@ def main():
     fig, ax = plt.subplots(1,1, figsize=(6, 5))
     ax.plot(hist_data.year, hist_data.GDP, label = "Historical", color = 'black')
     ax.plot(x, trend_GDP, label = "Benchmark projection", color = 'black', linestyle = '--')
-    ax.plot(x, random_path, label = "Example of random path", color = 'red')
+    ax.plot(x, random_path, label = "Simulation", color = 'red')
     ax.set_xlabel('Year')
     ax.legend()
     ax.set_ylim(0, np.max([random_path,trend_GDP]))
