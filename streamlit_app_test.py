@@ -41,10 +41,13 @@ def main():
     st.write("Drift $\mu$:", int(np.round(mu_bm,0)),  "USD per year. Volatility $\sigma$:", int(np.round(sigma_bm,0)), "USD per year^(1/2). Initial output $w_0$:", int(np.round(w_0)), " USD")
     
     # User inputs
-    mu = st.slider('Drift, $\mu$:', value=int(np.round(mu_bm,0)), min_value=0, max_value=500, step=1)
-    sigma = st.slider('Volatility, $\sigma$:', value=int(np.round(sigma_bm,0)), min_value=0, max_value=3000, step=1)
+    mu = st.slider('Drift, $\mu$:', value=int(np.round(mu_bm,0)), min_value=-300, max_value=500, step=1)
+    sigma = st.slider('Volatility, $\sigma$:', value=int(np.round(sigma_bm,0)), min_value=1, max_value=3000, step=1)
     f = mu/sigma**2
-    P = ruin_prob(f,w_0)
+    if mu <= 0:
+        P = 1
+    else:    
+        P = ruin_prob(f,w_0)
     st.write('Ruin probability: ', P)
     
     # Create a random path based on selected drift and volatility
