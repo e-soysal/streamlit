@@ -47,14 +47,13 @@ def main():
     
     a = st.slider('Location (left -> right)', value=3.0, min_value=0.0, max_value=10.0, step=0.1)
     b = st.slider('Shape (flat -> steep):', value=1.00, min_value=0.01, max_value=2.0, step=0.01)
-    mitigation = st.slider('Mitigation expenditure:', value=mitigation_year, min_value=0, max_value=1000, step=10)    
+    mitigation = st.slider('Mitigation expenditure, X*, in USD per year:', value=mitigation_year, min_value=0, max_value=1000, step=10)    
     
     # Find transition GDP until 2032
     x = np.arange(0,11)+2022
     transition_growth = (mu_bm-mitigation)*np.ones(len(x))
     transition_growth[0] = 0
     transition_GDP = w_0 + transition_growth.cumsum()
-
     
     fig, ax = plt.subplots(1,2, figsize=(10, 4))
     ax[0].plot(hist_data.year, hist_data.GDP, label = "Historical", color = 'black')
@@ -76,16 +75,15 @@ def main():
     P = ruin_prob(g_mitigation*f, transition_GDP[-1])
     st.write('Probability of ruin (after 2032): ', P)
     
-    ax[1].plot([mitigation_year, mitigation_year], [0,1], color = 'green', linestyle = "--", label = '2 degrees')
-    ax[1].plot([125, 125], [0,1], color = 'red', linestyle = "--", label = 'Current level')
-    ax[1].plot(sig_x, sig, color = 'black')
+    ax[1].plot([mitigation_year, mitigation_year], [0,f], color = 'green', linestyle = "--", label = '2 degrees')
+    ax[1].plot([125, 125], [0,f], color = 'red', linestyle = "--", label = 'Current level')
+    ax[1].plot(sig_x, sig*f, color = 'black')
     
     ax[1].scatter(mitigation, g_mitigation, label = "", color = 'Black')
-    ax[1].annotate('g(X)', xy=(mitigation,  g_mitigation), xytext=(mitigation-100, g_mitigation-0.1),
+    ax[1].annotate('f(X*)', xy=(mitigation,  g_mitigation*f), xytext=(mitigation-100, (g_mitigation-0.1)*f),
              arrowprops=dict(facecolor='black', arrowstyle='->'))
     ax[1].legend()
-    ax[1].set_title('Scaling factor of f')
-    ax[1].set_ylim(0,1)
+    ax[1].set_title('f(X)')
     ax[1].set_xlabel('Mitigation in USD per year')
      
     # Plotting the ruin probability
