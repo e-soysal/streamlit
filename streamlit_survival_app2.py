@@ -9,6 +9,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from scipy.stats import linregress
+from scipy.optimize import minimize
+from functools import partial
 
 def ruin_prob(f, w_0):
     """Ruin probability"""
@@ -28,6 +30,14 @@ def find_ruin(vector):
         first_negative_index = np.argmax(vector <= 0)
         vector[first_negative_index:] = 0
     return vector
+
+def prob_sig_function(x, scaling, a, b, w_0, mu_0, sigma_0, years):
+    sig = sigmoid(x/scaling,a,b)
+    transition_growth = (mu_0-x)*years
+    w_year = w_0+transition_growth
+    f_0 = mu_0 / sigma_0**2    
+    return np.log(ruin_prob(sig*f_0, w_year))
+
 
 def main():
     # User inputs
@@ -74,6 +84,13 @@ def main():
     # Calculate new ruin probability 2032
     P = ruin_prob(g_mitigation*f, transition_GDP[-1])
     st.write('Probability of ruin (after 2032): ', P)
+
+    # Find optimal mitigation
+    X_init = mitigation # Initial guess
+    # Create a partial function with fixed arguments
+    partial_function = partial(prob_sig_function, scaling=scaling, a=a, b=b, w_0=w_0, mu_0=mu_bm, sigma_0=sigma_bm, years=len(x))
+    result = minimize(partial_function, X_init)
+    st.write('Optimal spending on mitigation: ', result.x[0], 'Minimal ruin probability: ', np.exp(result.fun))
     
     ax[1].fill_between([mitigation_year-100, mitigation_year+100], [f,f],[0,0] ,color = 'green', label = '2 degrees required investments', alpha=.3)
     ax[1].plot([125, 125], [0,f], color = 'red', linestyle = "--", label = 'Current level')
