@@ -79,7 +79,7 @@ def main():
     ax[1].plot([125, 125], [0,f], color = 'red', linestyle = "--", label = 'Current level')
     ax[1].plot(sig_x, sig*f, color = 'black')
     
-    ax[1].scatter(mitigation, g_mitigation, label = "", color = 'Black')
+    ax[1].scatter(mitigation, g_mitigation*f, label = "", color = 'Black')
     ax[1].annotate('f(X*)', xy=(mitigation,  g_mitigation*f), xytext=(mitigation-100, (g_mitigation-0.1)*f),
              arrowprops=dict(facecolor='black', arrowstyle='->'))
     ax[1].legend()
@@ -89,5 +89,6 @@ def main():
     # Plotting the ruin probability
     st.pyplot(plt)
     plt.show()
+
 if __name__ == '__main__':
     main()
