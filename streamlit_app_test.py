@@ -40,8 +40,8 @@ def main():
     growth = hist_data['GDP'].diff()
     mu_bm = np.mean(growth)
     sigma_bm = np.std(growth)
-
-    st.write("Benchmark process: $\mu$:", np.round(mu_bm,0),  "$\sigma$:", int(np.round(sigma_bm,0)), "$w_0$:", 17527)
+    st.write("Benchmark process:")
+    st.write("Drift, $\mu$:", int(np.round(mu_bm,0)),  "USD per year. Volatility, $\sigma$:", int(np.round(sigma_bm,0)), "USD per year^(1/2), $w_0$:", 17527, " USD")
     mu = st.slider('Drift, $\mu$:', value=int(np.round(mu_bm,0)), min_value=0, max_value=500, step=1)
     sigma = st.slider('Volatility, $\sigma$:', value=int(np.round(sigma_bm,0)), min_value=0, max_value=3000, step=1)
     f = mu/sigma**2
