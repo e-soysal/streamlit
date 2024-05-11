@@ -57,7 +57,7 @@ def main():
     
     a = st.slider('Location (left -> right)', value=5.0, min_value=0.0, max_value=10.0, step=0.1)
     b = st.slider('Shape (flat -> steep):', value=1.00, min_value=0.01, max_value=2.0, step=0.01)
-    mitigation = st.slider('Mitigation expenditure, X*, in USD per year:', value=mitigation_year, min_value=0, max_value=1000, step=10)    
+    mitigation = st.slider(:orange['Mitigation expenditure in USD per year:'], value=mitigation_year, min_value=0, max_value=1000, step=10)    
     
     # Find transition GDP until 2032
     x = np.arange(0,11)+2022
