@@ -27,7 +27,7 @@ def main():
     sigma = st.slider('Volatility, $\sigma$:', value=265, min_value=0, max_value=3000, step=5)
     x = np.linspace(0, 1000, 100) 
     f = mu/sigma**2
-    P = ruin_prob(mu/sigma^2,w_0)
+    P = ruin_prob(f,w_0)
     st.write('Ruin probability', P)
     
     # Display results
