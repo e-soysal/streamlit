@@ -45,7 +45,7 @@ def main():
     sigma_bm = np.std(growth)
     f = mu_bm/sigma_bm**2
     
-    a = st.slider('Location (left -> right)', value=0, min_value=-5, max_value=5, step=1)
+    a = st.slider('Location (left -> right)', value=3.0, min_value=0.0, max_value=10.0, step=0.1)
     b = st.slider('Shape (flat -> steep):', value=1.00, min_value=0.01, max_value=2.0, step=0.01)
     mitigation = st.slider('Mitigation expenditure:', value=mitigation_year, min_value=0, max_value=1000, step=10)    
     
@@ -76,7 +76,7 @@ def main():
     P = ruin_prob(g_mitigation*f, transition_GDP[-1])
     st.write('Probability of ruin (after 2032): ', P)
     
-    ax[1].plot([mitigation_year, mitigation_year], [0,1], color = 'red', linestyle = "--", label = '2 degrees')
+    ax[1].plot([mitigation_year, mitigation_year], [0,1], color = 'green', linestyle = "--", label = '2 degrees')
     ax[1].plot([125, 125], [0,1], color = 'red', linestyle = "--", label = 'Current level')
     ax[1].plot(sig_x, sig, color = 'black')
     
