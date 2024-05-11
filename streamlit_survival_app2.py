@@ -78,7 +78,7 @@ def main():
     ax[0].grid(True)
 
     scaling = 100
-    sig_x = np.linspace(0, 1000, 100)
+    sig_x = np.linspace(0, 1200, 100)
     sig = sigmoid(sig_x/scaling, a, b)
     g_mitigation = sigmoid(mitigation/scaling, a,b)
     # Calculate new ruin probability 2032
@@ -87,11 +87,16 @@ def main():
 
     # Find optimal mitigation
     X_init = mitigation # Initial guess
+    
     # Create a partial function with fixed arguments
     partial_function = partial(prob_sig_function, scaling=scaling, a=a, b=b, w_0=w_0, mu_0=mu_bm, sigma_0=sigma_bm, years=len(x)-1)
     result = minimize(partial_function, X_init)
-    st.write('Optimal spending on mitigation: ', np.round(result.x[0],0), 'Minimal ruin probability: ', np.exp(result.fun))
-    
+    if result.x[0]>0:
+        st.write('Optimal spending on mitigation: ', np.round(result.x[0],0), 'Minimal ruin probability: ', np.exp(result.fun))
+        ax[1].scatter(result.x[0], sigmoid(result.x[0]/scaling, a,b)*f, label = "Optimal", color = 'Black')
+    else:
+        st.write('Optimal spending on mitigation:        Minimal ruin probability: ')
+        
     ax[1].fill_between([mitigation_year-100, mitigation_year+100], [f,f],[0,0] ,color = 'green', label = '2 degrees required investments', alpha=.3)
     ax[1].plot([125, 125], [0,f], color = 'red', linestyle = "--", label = 'Current level')
     ax[1].plot(sig_x, sig*f, color = 'black')
