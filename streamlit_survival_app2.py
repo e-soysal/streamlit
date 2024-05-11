@@ -56,8 +56,8 @@ def main():
     f = mu_bm/sigma_bm**2
     
     st.write('Choose the shape of the odds function f(x) by adjusting shape and location:')
-    a = st.slider('Location (left $\rightarrow$ right)', value=5.0, min_value=0.0, max_value=10.0, step=0.1)
-    b = st.slider('Shape (flat $\rightarrow$ steep):', value=1.00, min_value=0.01, max_value=2.0, step=0.01)
+    a = st.slider('Location (left \rightarrow right)', value=5.0, min_value=0.0, max_value=10.0, step=0.1)
+    b = st.slider('Shape (flat \rightarrow steep):', value=1.00, min_value=0.01, max_value=2.0, step=0.01)
     mitigation = st.slider(':orange-background[Mitigation expenditure in USD per year:]', value=mitigation_year, min_value=0, max_value=1000, step=10)    
     
     # Find transition GDP until 2032
