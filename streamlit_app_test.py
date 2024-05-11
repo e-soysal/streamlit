@@ -47,19 +47,19 @@ def main():
     P = ruin_prob(f,w_0)
     st.write('Ruin probability: ', P)
     
+    # Create a random path based on selected drift and volatility
     x = np.arange(0,100)+2022
     rd = np.random.normal(mu, sigma, len(x))
     rd[0] = 0
-    
     random_path = w_0 +  rd.cumsum()
     random_path = find_ruin(random_path)
     
     # Fit linear regression
     slope, intercept, r_value, p_value, std_err = linregress(hist_data['year'], hist_data['GDP'])
     trend_GDP = slope * x + intercept
-    print(slope)
-    print(std_err)
-    fig, ax = plt.subplots(1,2, figsize=(10, 4))
+    
+    # Plot
+    fig, ax = plt.subplots(1,1, figsize=(10, 4))
     ax[0].plot(hist_data.year, hist_data.GDP, label = "Historical", color = 'black')
     ax[0].plot(x, trend_GDP, label = "Benchmark projection", color = 'black', linestyle = '--')
     ax[0].plot(x, random_path, label = "Example of random path", color = 'red')
