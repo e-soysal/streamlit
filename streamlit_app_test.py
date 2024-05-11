@@ -22,25 +22,25 @@ def main():
     st.write("Benchmark process: $\mu$: 275, $\sigma$: 265, $w_0$: 17500")
     st.write("To stay below 2 degrees, we need to invest 5 percent of GDP")
 # User inputs
-    f = 275/265**2
     w_0 = 17500
-    a = st.slider('a:', value=1, min_value=0, max_value=1000, step=10)
-    b = st.slider('b:', value=0.1, min_value=0.001, max_value=0.1, step=0.001)
+    mu = st.slider('Drift, $\mu$:', value=275, min_value=0, max_value=500, step=5)
+    sigma = st.slider('Volatility, $\sigma$:', value=265, min_value=0, max_value=3000, step=5)
     x = np.linspace(0, 1000, 100) 
-    if st.button('Simulate'):
-        g = sigmoid(x,a,b)
-        P = ruin_prob(g*f,w_0-x)
-        # Display results
+    f = mu/sigma^2
+    P = ruin_prob(mu/sigma^2,w_0)
+    st.write('Ruin probability', P)
     
-        fig, ax = plt.subplots(1,2, figsize=(10, 4))
-        ax[0].plot(x, g, label = "Impact factor", color = 'black')
-        ax[0].set_xlabel('Mitigation expenditure, X')
-        ax[0].set_ylabel('g(X)')
-        ax[0].legend()
-        ax[0].set_title('Fig. 2A: Odds function')
-        ax[0].grid(True)
+    # Display results
+    
+    fig, ax = plt.subplots(1,2, figsize=(10, 4))
+    ax[0].plot(x, g, label = "Impact factor", color = 'black')
+    ax[0].set_xlabel('Mitigation expenditure, X')
+    ax[0].set_ylabel('g(X)')
+    ax[0].legend()
+    ax[0].set_title('Fig. 2A: Odds function')
+    ax[0].grid(True)
 
-        # Plotting the ruin probability
+    # Plotting the ruin probability
         # and the minimum points
         min_index_1 = np.argmin(P)
         min_x_1 = x[min_index_1]
