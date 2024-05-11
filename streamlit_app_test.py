@@ -59,7 +59,7 @@ def main():
     print(std_err)
     fig, ax = plt.subplots(1,2, figsize=(10, 4))
     ax[0].plot(hist_data.year, hist_data.GDP, label = "Historical", color = 'black')
-    ax[0].plot(x, random_path, label = "Random_path", color = 'red')
+    ax[0].plot([2022, x], [17527.18851, random_path], label = "Random_path", color = 'red')
     ax[0].set_xlabel('Year')
     ax[0].set_ylabel('GDP per capita [PPP, 2017 USD]')
     ax[0].legend()
