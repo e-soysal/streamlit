@@ -57,11 +57,12 @@ def main():
     
     # Fit linear regression
     slope, intercept, r_value, p_value, std_err = linregress(hist_data['year'], hist_data['GDP'])
-    trend_GDP = slope * hist_data['year'] + intercept
+    trend_GDP = slope * x + intercept
     print(slope)
     print(std_err)
     fig, ax = plt.subplots(1,2, figsize=(10, 4))
     ax[0].plot(hist_data.year, hist_data.GDP, label = "Historical", color = 'black')
+    ax[0].plot(x, trend_GDP, label = "Benchmark projection", color = 'black', linestyle = '--')
     ax[0].plot(x, random_path, label = "Example of random path", color = 'red')
     ax[0].set_xlabel('Year')
     ax[0].legend()
