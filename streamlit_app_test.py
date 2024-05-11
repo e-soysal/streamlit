@@ -41,20 +41,7 @@ def main():
     ax[0].grid(True)
 
     # Plotting the ruin probability
-        # and the minimum points
-        min_index_1 = np.argmin(P)
-        min_x_1 = x[min_index_1]
-        min_y_1 = P[min_index_1]
-        
-        ax[1].plot(x, P, label = "$P_1$", zorder=1, color = 'black')
-        ax[1].scatter(min_x_1, min_y_1, color='red', label='Minimum points', zorder=2)
-        ax[1].set_xlabel('Mitigation expenditure, X')
-        ax[1].set_ylabel('P(X)')
-        ax[1].legend()
-        ax[1].set_title('Fig. 2B: Ruin probability')
-        ax[1].grid(True)
-
-        st.pyplot(plt)
+    st.pyplot(plt)
      
 if __name__ == '__main__':
     main()
