@@ -58,7 +58,8 @@ def main():
     st.write('Choose the shape of the odds function f(x) by adjusting shape and location:')
     a = st.slider('Location (left to right)', value=5.0, min_value=0.0, max_value=10.0, step=0.1)
     b = st.slider('Shape (flat to steep):', value=1.00, min_value=0.01, max_value=2.0, step=0.01)
-    mitigation = st.slider(':orange-background[Mitigation expenditure in USD per year:]', value=mitigation_year, min_value=0, max_value=1000, step=10)    
+    st.write('Choose a the yearly expenditure on mitigation')
+    mitigation = st.slider(':orange-background[Mitigation expenditure in USD per year:]', value=mitigation_year, min_value=0, max_value=1000, step=10, label_visibility = "collapsed" )    
     
     # Find transition GDP until 2032
     x = np.arange(0,11)+2022
@@ -100,7 +101,7 @@ def main():
         
     ax[1].scatter(mitigation, g_mitigation*f, label = "Chosen strategy", color = 'Black')
     ax[1].fill_between([mitigation_year-50, mitigation_year+50], [f,f],[0,0] ,color = 'green', label = '2 degrees required investments', alpha=.3)
-    ax[1].plot([125, 125], [0,f], color = 'red', linestyle = "--", label = 'Current investments')
+    ax[1].plot([125, 125], [0,f], color = 'black', linestyle = "--", label = 'Current investments')
     ax[1].plot(sig_x, sig*f, color = 'black')
     
     ax[1].legend()
