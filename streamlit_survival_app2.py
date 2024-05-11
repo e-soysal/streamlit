@@ -88,7 +88,7 @@ def main():
     # Find optimal mitigation
     X_init = mitigation # Initial guess
     # Create a partial function with fixed arguments
-    partial_function = partial(prob_sig_function, scaling=scaling, a=a, b=b, w_0=w_0, mu_0=mu_bm, sigma_0=sigma_bm, years=len(x))
+    partial_function = partial(prob_sig_function, scaling=scaling, a=a, b=b, w_0=w_0, mu_0=mu_bm, sigma_0=sigma_bm, years=len(x)-1)
     result = minimize(partial_function, X_init)
     st.write('Optimal spending on mitigation: ', np.round(result.x[0],0), 'Minimal ruin probability: ', np.exp(result.fun))
     
