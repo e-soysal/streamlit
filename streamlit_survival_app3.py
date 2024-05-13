@@ -72,11 +72,11 @@ def main():
     
     st.write('Choose the shape of the drift mu(x) by adjusting shape and location:')
     a = st.slider('Impact point (left to right)', value=1100, min_value=0, max_value=800, step=1)
-    b_input = st.slider('Shape (flat to steep):', value=1, min_value=0, max_value=100, step=1)
+    b_input = st.slider('Shape (flat to steep):', value=1, min_value=-10, max_value=100, step=1)
     st.write('Choose a the yearly expenditure on mitigation in USD per capita per year:')
     mitigation = st.slider(':orange-background[Mitigation expenditure in USD per year:]', value=mitigation_year, min_value=0, max_value=1000, step=10, label_visibility = "collapsed" )    
 
-    b = b_input/1000
+    b = b_input/10000
     
     
     # Find transition GDP until 2032
