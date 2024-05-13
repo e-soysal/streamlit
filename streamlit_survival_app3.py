@@ -14,7 +14,10 @@ from functools import partial
 
 def ruin_prob(f, w_0):
     """Ruin probability"""
-    P = np.exp(-2*f *w_0)
+    if f > 0:
+        P = np.exp(-2*f *w_0)
+    else:
+        P=1
     return P
     
 def sigmoid(x,a,b):
