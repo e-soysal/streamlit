@@ -69,7 +69,7 @@ def main():
     
     st.write('Choose the shape of the drift mu(x) by adjusting shape and location:')
     a = st.slider('Impact point (left to right)', value=1100, min_value=0, max_value=800, step=1)
-    b = st.slider('Shape (flat to steep):', value=0.0001, min_value=0.0001, max_value=1.0000, step=0.0001)
+    b = st.slider('Shape (flat to steep):', value=0.0001, min_value=-0.0010, max_value=0.0010, step=0.0001)
     st.write('Choose a the yearly expenditure on mitigation in USD per capita per year:')
     mitigation = st.slider(':orange-background[Mitigation expenditure in USD per year:]', value=mitigation_year, min_value=0, max_value=1000, step=10, label_visibility = "collapsed" )    
     
