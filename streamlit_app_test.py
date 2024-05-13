@@ -37,9 +37,9 @@ def main():
     mu_bm = np.mean(growth)
     sigma_bm = np.std(growth)
     
-    st.write("Initial output $w_0$:", int(np.round(w_0)), " USD")
-    st.write("Benchmark drift $\mu_{BM}$:", int(np.round(mu_bm)), " USD per year")
-    st.write("Benchmark volatility $\sigma_{BM}$:", int(np.round(sigma_bm)), " USD per year^(1/2)")
+    st.write("Initial output $w_0$ [USD/year]:", int(np.round(w_0)) )
+    st.write("Benchmark drift $\mu_{BM}$ [USD/year per year]:", int(np.round(mu_bm)) )
+    st.write("Benchmark volatility $\sigma_{BM}$ [USD/year per year$^{1/2}$]:", int(np.round(sigma_bm)))
     # User inputs
     mu = st.slider('Drift, $\mu$:', value=int(np.round(mu_bm,0)), min_value=-300, max_value=500, step=1)
     sigma = st.slider('Volatility, $\sigma$:', value=int(np.round(sigma_bm,0)), min_value=1, max_value=3000, step=1)
