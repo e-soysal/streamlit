@@ -106,9 +106,9 @@ def main():
     GDP_IPCC_high = w_bm*(1-10/100)
     
     # Calculate new ruin probability 2032
-    P = ruin_prob_T(mu_cc,sigma_bm, w_1,T)
-    st.write('Probability of ruin: ', P)
- #   damage =  (GDP_2bm[2100-year_i]- GDP_2[2100-year_i] )/ GDP_2bm[2100-year_i]
+    #P = ruin_prob_T(mu_cc,sigma_bm, w_1,T)
+    #st.write('Probability of ruin: ', P)
+    #   damage =  (GDP_2bm[2100-year_i]- GDP_2[2100-year_i] )/ GDP_2bm[2100-year_i]
     st.write('GDP damage in percent by 2100: ', damage_2100)
     
     print(P)
