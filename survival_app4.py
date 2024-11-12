@@ -55,10 +55,10 @@ def main():
     year_i = st.slider('Shift year', value=2070, min_value=2022, max_value=2099, step=1)
     
     st.write('Choose the shift year damage level:')
-    damage_i = st.slider('Shift damage level', value=0.0, min_value=0.0, max_value=100.0, step=0.1)
+    damage_i = st.slider('Shift damage level', value=0.0, min_value=0.0, max_value=20.0, step=0.1)
 
-    st.write('Choose the time horizon:')
-    T = st.slider('Time horizon', value=500, min_value=100, max_value=5000, step=50)
+    #st.write('Choose the time horizon:')
+    #T = st.slider('Time horizon', value=500, min_value=100, max_value=5000, step=50)
 
     # Define two periods - pre and post shift
     x_1 = np.arange(0,year_i-2022)+2022 
