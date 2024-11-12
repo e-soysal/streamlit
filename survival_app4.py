@@ -139,7 +139,7 @@ def main():
     ax[0].annotate('IPCC projected damage 2100', xy=(2100, w_bm*(1-16.5/100)),
                    xytext=(2100+10, (GDP_2[2100-year_i]+GDP_bm[year_i-2022])/2+7000),
                    arrowprops=dict(facecolor='black', arrowstyle='->'))
-    ax[0].set_ylim(0,np.max([np.max(GDP_2),np.max(GDP_1),np.max(hist_data.GDP[:]), 80000])+1000)
+    ax[0].set_ylim(0,82000)
     ax[0].set_xlim(1995,2200)
     ax[0].set_xlabel('Year')
     ax[0].set_title('GDP per capita [PPP, 2017 USD]')
