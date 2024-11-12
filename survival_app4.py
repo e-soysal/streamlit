@@ -59,7 +59,8 @@ def main():
 
     #st.write('Choose the time horizon:')
     #T = st.slider('Time horizon', value=500, min_value=100, max_value=5000, step=50)
-
+    T=500
+    
     # Define two periods - pre and post shift
     x_1 = np.arange(0,year_i-2022)+2022 
     x_2 = np.arange(0,T+2022-year_i)+year_i
