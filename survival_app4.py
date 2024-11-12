@@ -45,8 +45,8 @@ def main():
     sigma_bm = np.std(growth)
 
     # Input from users
-    st.write('Choose the damage by year 2100 in percent of GDP:')
-    damage_2100 = st.slider('Damage', value=16.5, min_value=0.0, max_value=100.0, step=0.5)
+    # st.write('Choose the damage by year 2100 in percent of GDP:')
+    # damage_2100 = st.slider('Damage', value=16.5, min_value=0.0, max_value=100.0, step=0.5)
     
     #st.write('Choose the the drift under impact of climate change:')
     #mu_cc = st.slider('Drift', value=-20, min_value=-200, max_value=280, step=1)
