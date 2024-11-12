@@ -110,7 +110,7 @@ def main():
     #P = ruin_prob_T(mu_cc,sigma_bm, w_1,T)
     #st.write('Probability of ruin: ', P)
     #   damage =  (GDP_2bm[2100-year_i]- GDP_2[2100-year_i] )/ GDP_2bm[2100-year_i]
-    st.write('GDP damage in percent by 2100: ', damage_2100)
+    # st.write('GDP damage in percent by 2100: ', damage_2100)
     
     #print('GDP damage in percent by 2100: ', round(damage_2100,0))
         
