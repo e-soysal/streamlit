@@ -116,13 +116,13 @@ def main():
     #print('GDP damage in percent by 2100: ', round(damage_2100,0))
         
     # Plot wealth projections
-    fig, ax = plt.subplots(1,2, figsize=(10, 6), sharex = True)
+    fig, ax = plt.subplots(1,2, figsize=(10, 5), sharex = True)
     ax[0].plot(hist_data.year, hist_data.GDP, label = "Historical", color = 'black')
     ax[0].plot(np.append(x_1, x_2), GDP_bm, label = "Benchmark projection", color = 'black', linestyle = '--')
     ax[0].plot(x_1, GDP_1, label = "Pre-shift", color = 'purple')
     ax[0].plot(x_2, GDP_2, label = "Post-shift", color = 'blue')
     ax[0].fill_between(np.append(x_1,x_2), np.append(GDP_1,GDP_2), GDP_bm, alpha = 0.2, label= 'Expected damage' )
-    ax[0].fill_between(x, GDP_low,GDP_high, alpha = 0.2, label= 'Uncertainty bands')
+    # ax[0].fill_between(x, GDP_low,GDP_high, alpha = 0.2, label= 'Uncertainty bands')
     
     #ax[0].plot([year_i, year_i], [GDP_2[0], GDP_bm[2022+T-year_i]], color = 'black', linestyle = ':')
     
@@ -131,13 +131,13 @@ def main():
     
     ax[0].scatter([year_i], GDP_1[-1], label = "", color = 'Black')
     
-    ax[0].annotate('Shift point \nYear: ' + str(year_i) +'\nDamage level: ' + str(damage_i),
+    ax[0].annotate('Damage onset',
                    xy=(year_i+3, GDP_2[0]-2000), xytext=(year_i-20, GDP_2[0]-20000),
                    arrowprops=dict(facecolor='black', arrowstyle='->'))
 #    ax[0].annotate('Expected damage in 2100: ' + str(round(damage*100,0))[0:2] + '%', xy=(2100, (GDP_2[2100-year_i]+GDP_2bm[2100-year_i])/2),
 #                   xytext=(2100+10, (GDP_2[2100-year_i]+GDP_2bm[2100-year_i])/2),
 #                   arrowprops=dict(facecolor='black', arrowstyle='->'))
-    ax[0].annotate('IPCC projected damage 2100', xy=(2100, w_bm*(1-16.5/100)),
+    ax[0].annotate('IPCC 4C forecast', xy=(2100, w_bm*(1-16.5/100)),
                    xytext=(2100+10, (GDP_2[2100-year_i]+GDP_bm[year_i-2022])/2+7000),
                    arrowprops=dict(facecolor='black', arrowstyle='->'))
     ax[0].set_ylim(0,82000)
