@@ -52,11 +52,12 @@ def main():
     #mu_cc = st.slider('Drift', value=-20, min_value=-200, max_value=280, step=1)
 
     st.write('Choose the shift year:')
-    year_i = st.slider('Shift year', value=2070, min_value=2023, max_value=2099, step=1)
+    year_i = st.slider('Onset year', value=2070, min_value=2023, max_value=2099, step=1)
     
-    st.write('Choose the shift year damage level:')
-    damage_i = st.slider('Shift damage level', value=0.0, min_value=0.0, max_value=20.0, step=0.1)
-
+    #st.write('Choose the shift year damage level:')
+    #damage_i = st.slider('Shift damage level', value=0.0, min_value=0.0, max_value=20.0, step=0.1)
+    damage_i=0
+    
     #st.write('Choose the time horizon:')
     #T = st.slider('Time horizon', value=500, min_value=100, max_value=5000, step=50)
     T=500
