@@ -131,12 +131,10 @@ def main():
     
     ax[0].scatter([year_i], GDP_1[-1], label = "", color = 'Black')
     
-    ax[0].annotate('Damage onset',
-                   xy=(year_i+3, GDP_2[0]-2000), xytext=(year_i-20, GDP_2[0]-20000),
-                   arrowprops=dict(facecolor='black', arrowstyle='->'))
 #    ax[0].annotate('Expected damage in 2100: ' + str(round(damage*100,0))[0:2] + '%', xy=(2100, (GDP_2[2100-year_i]+GDP_2bm[2100-year_i])/2),
 #                   xytext=(2100+10, (GDP_2[2100-year_i]+GDP_2bm[2100-year_i])/2),
 #                   arrowprops=dict(facecolor='black', arrowstyle='->'))
+    
     ax[0].annotate('IPCC 4C forecast', xy=(2100, w_bm*(1-16.5/100)),
                    xytext=(2100+10, (GDP_2[2100-year_i]+GDP_bm[year_i-2022])/2+7000),
                    arrowprops=dict(facecolor='black', arrowstyle='->'))
@@ -152,11 +150,13 @@ def main():
     GDP_damages = GDP_bm - np.append(GDP_1,GDP_2)
     beta = np.cumprod(np.ones(len(x))*0.96)
     GDP_discounted = np.multiply(GDP_damages,beta)
+    E_NPV =np.round(np.sum(GDP_discounted))
     ax[1].plot(x, beta )
     ax[1].bar(x[0:200], GDP_discounted[0:200] )
     ax[1].set_ylim(0,820)
     ax[1].set_xlim(1995,2200)
     ax[1].set_title('Expected discounted damage')
+    ax[1].annotate('NPV: ' + E_NPV, xytext=(2160, 700))
     st.pyplot(plt)
     plt.show()
 
