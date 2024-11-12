@@ -111,8 +111,7 @@ def main():
     #   damage =  (GDP_2bm[2100-year_i]- GDP_2[2100-year_i] )/ GDP_2bm[2100-year_i]
     st.write('GDP damage in percent by 2100: ', damage_2100)
     
-    print(P)
-    print('GDP damage in percent by 2100: ', round(damage_2100,0))
+    #print('GDP damage in percent by 2100: ', round(damage_2100,0))
         
     # Plot wealth projections
     fig, ax = plt.subplots(2,1, figsize=(6, 10), sharex = True)
