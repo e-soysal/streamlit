@@ -156,7 +156,7 @@ def main():
     ax[1].set_ylim(0,820)
     ax[1].set_xlim(1995,2200)
     ax[1].set_title('Expected discounted damage')
-    ax[1].annotate('NPV: ' + E_NPV, xytext=(2160, 700))
+    ax[1].annotate('NPV: ' + E_NPV, xy=(2100, 700), xytext=(2160, 700))
     st.pyplot(plt)
     plt.show()
 
