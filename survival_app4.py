@@ -117,10 +117,10 @@ def main():
         
     # Plot wealth projections
     fig, ax = plt.subplots(1,2, figsize=(10, 5), sharex = True)
-    ax[0].plot(hist_data.year, hist_data.GDP, label = "Historical", color = 'black')
+    ax[0].plot(hist_data.year, hist_data.GDP, label = "Historical observations", color = 'black')
     ax[0].plot(np.append(x_1, x_2), GDP_bm, label = "Benchmark projection", color = 'black', linestyle = '--')
-    ax[0].plot(x_1, GDP_1, label = "Pre-shift", color = 'purple')
-    ax[0].plot(x_2, GDP_2, label = "Post-shift", color = 'blue')
+    ax[0].plot(x_1, GDP_1, color = 'blue')
+    ax[0].plot(x_2, GDP_2, label = "4C GDP projection", color = 'blue')
     ax[0].fill_between(np.append(x_1,x_2), np.append(GDP_1,GDP_2), GDP_bm, alpha = 0.2, label= 'Expected damage' )
     # ax[0].fill_between(x, GDP_low,GDP_high, alpha = 0.2, label= 'Uncertainty bands')
     
