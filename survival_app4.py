@@ -153,8 +153,10 @@ def main():
     beta = np.cumprod(np.ones(len(x))*0.96)
     GDP_discounted = np.multiply(GDP_damages,beta)
     ax[1].plot(x, beta )
-    
     ax[1].bar(x[0:200], GDP_discounted[0:200] )
+    ax[1].set_ylim(0,820)
+    ax[1].set_xlim(1995,2200)
+    ax[0].set_title('Expected discounted damage')
     st.pyplot(plt)
     plt.show()
 
