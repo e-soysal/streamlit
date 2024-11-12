@@ -116,7 +116,7 @@ def main():
     #print('GDP damage in percent by 2100: ', round(damage_2100,0))
         
     # Plot wealth projections
-    fig, ax = plt.subplots(2,1, figsize=(6, 10), sharex = True)
+    fig, ax = plt.subplots(1,2, figsize=(10, 6), sharex = True)
     ax[0].plot(hist_data.year, hist_data.GDP, label = "Historical", color = 'black')
     ax[0].plot(np.append(x_1, x_2), GDP_bm, label = "Benchmark projection", color = 'black', linestyle = '--')
     ax[0].plot(x_1, GDP_1, label = "Pre-shift", color = 'purple')
